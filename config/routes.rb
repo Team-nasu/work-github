@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  devise_for :customers
   namespace :admin do
     get 'customers/index'
     get 'customers/edit'
@@ -38,9 +40,12 @@ Rails.application.routes.draw do
     get 'products/show'
     get 'products/edit'
   end
+
+
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
+
 
   namespace :admin do
   end
