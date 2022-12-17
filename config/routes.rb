@@ -38,7 +38,9 @@ Rails.application.routes.draw do
     get 'products/show'
     get 'products/edit'
   end
-  devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 
   namespace :admin do
   end
