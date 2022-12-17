@@ -5,12 +5,10 @@ class CreateCustomers < ActiveRecord::Migration[6.1]
       t.string :first_name
       t.string :last_name_kana
       t.string :first_name_kana
-      t.string :email
-      t.string :passward
       t.string :postcode
       t.string :address
       t.string :phone_number
-      t.boolean :is_deleted
+      t.boolean :is_deleted, null: false, default: false
       t.timestamps
     end
   end
