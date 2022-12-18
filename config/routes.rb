@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'products/show'
     get 'products/edit'
   end
+
 scope module: :public do
   get 'addresses/index'
   get 'addresses/edit'
