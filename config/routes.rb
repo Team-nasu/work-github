@@ -20,15 +20,12 @@ Rails.application.routes.draw do
     get 'products/edit'
   end
 scope module: :public do
-  get 'addresses/index'
-  get 'addresses/edit'
-  get 'orders/new'
-  get 'orders/comfirm'
-  get 'orders/complite'
-  get 'orders/index'
-  get 'orders/show'
+
+  resources :addresses, only[:index, :edit]
+  resources :orders, only:[:new, :comfirm, :complite, :index, :show]
+  resources :customers, only:[:index, :show, :edit]
+  resources :products, only:[:index, :show]
   get 'cart_items/index'
-  get 'customers/index'
   root to: 'homes#top'
   get '/about' => 'homes#about'
 end
