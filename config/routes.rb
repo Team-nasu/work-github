@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     get 'customers/index'
   end
   namespace :public do
-    get root to: 'homes#top'
+    root to: 'homes#top'
+    get '/top' => 'homes#top'
     get '/about' => 'homes#about'
   end
   namespace :admin do
