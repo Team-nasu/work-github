@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     get 'customers/index'
   end
   namespace :public do
-    get root to: 'homes#top'
+    get '/top' => 'homes#top'
+    root to: 'homes#top'
     get '/about' => 'homes#about'
   end
   namespace :admin do
@@ -42,9 +43,9 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users, controllers: {
-        sessions: 'users/sessions'
-      }
+  # devise_for :users, controllers: {
+  #       sessions: 'users/sessions'
+  #     }
 
 
   namespace :admin do
