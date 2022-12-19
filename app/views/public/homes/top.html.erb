@@ -1,29 +1,10 @@
+<div>
+  <p>
+    ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+  </p>
+</div>
 
-    <div>
-      <div class="card" style="max-width: 400px;">
-        <%= image_tag 'forest.jpg' %>
-        <div class="card-img-overlay">
-          <p class="bg-light text-dark">
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h2>新着商品</h2>
-      <% @products.each do |product| %>
-        <div>
-          <%= image_tag product.get_image %>
-          <%= product.name %>
-          <span>￥</span><%= product.price %>
-        </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col-md-3 offset-md-9">
-        <%= link_to "すべての商品を見る＞", products_path %>
-      </div>
-    </div>
+<p>新着商品</p>
