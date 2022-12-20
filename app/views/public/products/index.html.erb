@@ -1,4 +1,4 @@
-<h2>商品一覧</h2>
+<span class="h2">商品一覧</span><span>(全<%= @products.count %>件)</span>
 <% @products.each do |product| %>
     <div class="col-md-3">
         <%= link_to product_path(product) do %>
