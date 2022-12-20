@@ -1,6 +1,14 @@
-<h2>注文情報入力</h2>
+<div class="container">
+    
+<h3>注文情報入力</h3>
+<%= form_with(model: @order, local: true) do |form| %>
+  <p>支払方法</p>
+  <label>
+  <%= form.radio_button :credit_card, "クレジットカード" %>クレジットカード</label>
+  
+  
 
-<p>支払方法</p>
-
+<% end %>
 
 <p>お届け先</p>
+</div>
