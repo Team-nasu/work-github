@@ -8,29 +8,19 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-    get 'customers/index'
-    get 'customers/edit'
-    get 'customers/show'
-    get 'genres/index'
-    get 'genres/edit'
+    resources :customers, only: [:index, :show, :edit]
+    resources :products, only: [:index, :new, :show, :edit]
+    resources :genres, only: [:index, :edit]
     get 'homes/top'
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'products/index'
-    get 'products/new'
-    get 'products/show'
-    get 'products/edit'
-  end
-  scope module: :public do
-    get 'orders/new'
-    get 'orders/comfirm'
-    get 'orders/complite'
-    get 'orders/index'
     get 'orders/show'
+  end
+
+  scope module: :public do
+    resources :addresses, only: [:index, :edit]
+    resources :orders, only: [:new, :comfirm, :complite, :index, :show]
+    resources :customers, only: [:index, :show, :edit]
+    resources :products, only: [:index, :show]
     get 'cart_items/index'
-    get 'customers/index'
-    get 'customers/show'
-    get 'products/index'
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end
