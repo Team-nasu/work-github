@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+
+  has_many :cart_items
+
   has_one_attached :image
 
   def get_image
@@ -8,4 +11,5 @@ class Product < ApplicationRecord
     end
     image
   end
+
 end
