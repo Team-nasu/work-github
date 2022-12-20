@@ -4,8 +4,7 @@
   </div>
 
 
-  <form>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_with model: @customer ,url: customer_registration_path, method: :post do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">名前 </label>
@@ -28,7 +27,7 @@
       </div>
 
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">フリガナ
+        <label class="col-sm-3 col-form-label">フリガナ </label>
         <div class="col-sm-9">
           <div class="row">
             <label class="col-form-label col-sm-1">セイ</label>
@@ -51,7 +50,7 @@
         <label class="col-sm-3 col-form-label">メールアドレス </label>
         <div class="col-sm-9">
           <div class="field">
-            <%= f.email_field :email, placeholder: "sample@example.com" %>
+            <%= f.email_field :email, placeholder: "sample@example.com", class: "col-md-6"%>
           </div>
         </div>
       </div>
@@ -60,7 +59,7 @@
         <label class="col-sm-3 col-form-label">郵便番号(ハイフンなし) </label>
         <div class="col-sm-9">
           <div class="field">
-            <%= f.text_field :postcode, placeholder: "0000000" %>
+            <%= f.text_field :postcode, placeholder: "0000000", class: "col-md-6" %>
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@
         <label class="col-sm-3 col-form-label">住所 </label>
         <div class="col-sm-9">
           <div class="field">
-            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-md-6" %>
           </div>
         </div>
       </div>
@@ -78,7 +77,7 @@
         <label class="col-sm-3 col-form-label">電話番号(ハイフンなし) </label>
         <div class="col-sm-9">
           <div class="field">
-            <%= f.text_field :phone_number, placeholder: "00000000000" %>
+            <%= f.text_field :phone_number, placeholder: "00000000000", class: "col-md-6" %>
           </div>
         </div>
       </div>
@@ -87,7 +86,7 @@
         <label class="col-sm-3 col-form-label">パスワード(6文字以上) </label>
         <div class="col-sm-9">
           <div class="field">
-            <%= f.password_field :encrypted_password %>
+            <%= f.password_field :password, class: "col-md-6" %>
           </div>
         </div>
       </div>
@@ -97,15 +96,26 @@
         <div class="col-sm-9">
           <div class="field">
             <%#= f.label :password_confirmation %>
-            <%= f.password_field :encrypted_password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-6" %>
           </div>
+        </div>
+      </div>
 
       <div class="row">
+        <label class="col-sm-3 col-form-label"></label>
         <div class="col-sm-9">
           <div class="actions">
-          <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
+            <%= f.submit "新規登録", class: 'btn btn-sm btn-success col-md-5' %>
+          </div>
         </div>
+      </div>
       <% end %>
 
-    <%= render "public/shared/links" %>
-  </form>
+  <div class="navbar">
+    <h4>既に登録済みの方</h4>
+  </div>
+  <div>
+    <%= link_to "こちら", new_customer_session_path, class: "col-md-3" %>からログインしてください
+  </div>
+
+</div>
