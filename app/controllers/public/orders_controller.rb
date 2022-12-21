@@ -7,6 +7,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
+    @product = Product.find(params[:product_id])
+    @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
     if params[:order][:address_option] == "0"
       @order.shipping_post_code = current_customer.post_code
@@ -17,7 +19,7 @@ class Public::OrdersController < ApplicationController
       @order.shipping_post_code = ship.post_code
       @order.shipping_address = ship.address
       @order.shipping_name = ship.name
-    elsif params[:order][:address_option] = "2"
+    elsif params[:order][:address_option] == "2"
       @order.shipping_post_code = params[:order][:shipping_post_code]
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_name = params[:order][:shipping_name]
