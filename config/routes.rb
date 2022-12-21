@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :addresses, only: [:index, :edit]
-    resources :orders, only: [:new, :comfirm, :complite, :index, :show]
+    resources :orders, only: [:new, :confirm, :complite, :index, :show]
     resources :customers, only: [:index, :show, :edit]
     resources :products, only: [:index, :show]
     get 'cart_items/index'

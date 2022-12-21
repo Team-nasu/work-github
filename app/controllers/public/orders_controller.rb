@@ -1,10 +1,12 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
-    @order = Order.new(order_params)
-    @addresses = current_member.addresses.all
+    @order = Order.new
+    @addresses = current_customer.addresses.all
   end
 
-  def comfirm
+  def confirm
     @order = Order.new(order_params)
     if params[:order][:address_option] == "0"
       @order.shipping_post_code = current_customer.post_code
