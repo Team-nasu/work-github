@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit]
-    resources :products, only: [:index, :new, :show, :edit]
+    resources :products, only: [:index, :new, :show, :edit, :create]
     resources :genres, only: [:index, :edit]
     get 'homes/top'
     get 'orders/show'
