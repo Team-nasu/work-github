@@ -12,7 +12,7 @@ class Admin::ProductsController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     @product.save
     # 4. トップ画面へリダイレクト
-    redirect_to 'new'
+    redirect_to '/admin/products/new'
   end
 
   def show
