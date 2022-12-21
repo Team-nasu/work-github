@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit]
     resources :orders, only: [:new, :complite, :index, :show]
     post 'orders/confirm' => "orders#confirm"
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :show]
     get 'cart_items/index'
     root to: 'homes#top'
