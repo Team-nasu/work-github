@@ -1,31 +1,49 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!
-  
   def new
     @order = Order.new
     @addresses = current_customer.addresses.all
   end
-  
-  def confirm
+
+  def confirm  #注文情報確認画面
     @product = Product.find(params[:product_id])
-    @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    if params[:order][:address_option] == "0"
-      @order.shipping_post_code = current_customer.post_code
+    @cart_items = current_customer.cart_items.all
+    
+    if params[:order][:address_option] == "0" #注文画面で住所選択が0のときログインユーザーの住所
+      @order.shipping _postal_code = current_customer.postcode
       @order.shipping_address = current_customer.address
       @order.shipping_name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:customer_id])
-      @order.shipping_post_code = ship.post_code
+      
+    elsif params[:order][:address_option] == "1" #注文画面で住所選択が1のとき配送先テーブルからデータ取得
+      ship = Address.find(params[:order][:customer_id]) #該当の会員IDの配送先データ取得
+      @order.shipping_postal_code = ship.postcode
       @order.shipping_address = ship.address
       @order.shipping_name = ship.name
-    elsif params[:order][:address_option] == "2"
+    
+    elsif params[:order][:address_option] = "2" #注文画面で選択が2のとき新規登録
       @order.shipping_post_code = params[:order][:shipping_post_code]
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_name = params[:order][:shipping_name]
     else
-      render 'new'
+      render :new
     end
+  end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    
+    current_member.cart_items.each do |cart_item| #カート内商品を1つずつ取り出しループ　　
+      @order_product = OrderProduct.new #初期化宣言
+      @order_product.order_id =  @order.id #order注文idを紐付けておく
+      @order_product.item_id = cart_item.item_id #カート内商品idを注文商品idに代入
+      @order_product.amount = cart_item.quantity #カート内商品の個数を注文商品の個数に代入
+      @order_product.price = (cart_item.product.price*1.08).floor #消費税込みに計算して代入
+      @order_product.save #注文商品を保存
+    end
+    current_customer.cart_items.destroy_all #カートの中身を削除
+    redirect_to orders_complite_path
   end
 
   def complite
