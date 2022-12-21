@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @addresses = current_customer.addresses.all
   end
-
+  
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_option] == "0"
