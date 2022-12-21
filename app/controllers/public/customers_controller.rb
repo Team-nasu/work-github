@@ -4,4 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def show
   end
+  
+  def check
+  end
 end
