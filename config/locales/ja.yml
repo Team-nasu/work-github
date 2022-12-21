@@ -1,3 +1,4 @@
+
 ja:
  enums:
   product:
@@ -12,3 +13,11 @@ ja:
     pudding: "プリン"
     baked_sweets: "焼き菓子"
     candy: "キャンディ"
+
+ ja:
+    enums:
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
