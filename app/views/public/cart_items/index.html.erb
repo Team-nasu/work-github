@@ -25,8 +25,8 @@
         <%= cart_item.product.name %>
       </td>
       <td><%= cart_item.product.with_tax_price %></td>
-      <td><%= cart_item.product.quantity %></td>
-      <td><%= cart_item.subtotal * cart_item.product.quantity %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= cart_item.subtotal * cart_item.quantity %></td>
       <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
       <% @total += cart_item.subtotal %>
     </tr>

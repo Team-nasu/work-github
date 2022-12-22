@@ -9,7 +9,7 @@ class Public::ProductsController < ApplicationController
     
   end
 
-    def create
+  def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.save
     redirect_to '/public/cart_items'
