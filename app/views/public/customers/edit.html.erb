@@ -1,5 +1,5 @@
 <h4>会員情報編集</h4>
-<%= form_with model:@customer, url: customer_path(@customer.id), method: :patch do |f| %>
+<%= form_with model:@customer, url: customers_path(), method: :patch do |f| %>
 <table>
   <tr>
     <th>氏名</th><td><%= f.text_field :last_name %></td><td><%= f.text_field :first_name %></td><td></td>
@@ -22,7 +22,7 @@
   <tr>
     <th></th><td><%= f.submit '編集内容を保存', class: "btn btn-primary" %></td>
     <% end %>
-    <td><%= link_to '退会する', "/customers/check" , class: "btn btn-danger" %></td>
+    <td><%= link_to '退会する', customers_check_path , class: "btn btn-danger" %></td>
   </tr>
 
 </table>
