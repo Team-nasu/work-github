@@ -6,21 +6,30 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-    add_column :customers, :is_deleted, :boolean, default: false
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
+  
   def update
-    customer = Customer.find(params[:id])
+    customer = current_customer
     customer.update(customer_params)
     redirect_to customer_path
+  end
+  
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path 
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode,:address, :phone_number, :email)
+    params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode,:address, :phone_number, :email, :is_deleted)
   end
 end
