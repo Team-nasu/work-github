@@ -12,13 +12,13 @@
       <th><%= customer.id %></th>
       <th><%= link_to admin_customer_path(customer) do%><%= customer.last_name %><%= customer.first_name %><% end %></th>
       <th><%= customer.email %></th>
-      <th>
+      <td>
         <% if customer.is_deleted == false %>
           有効
         <% else %>
           退会済み
         <% end %>
-      </th>
+      </td>
     </tr>
   <% end %>
   <!--10項目まで1ページに表示-->
