@@ -6,6 +6,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
+    add_column :customers, :is_deleted, :boolean, default: false
   end
 
   def edit
