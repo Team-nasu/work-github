@@ -15,17 +15,13 @@
     <div>
       <h2>新着商品</h2>
       <% @products.each do |product| %>
-      <div class="col-md-3">
-      <table>
-      <%= link_to product_path(product) do %>
-      <tr>
-        <th>
-          <%= image_tag product.get_image %>
-        </th>
-      </tr>
-      <tr>
-        <th><%= product.name %></th>
-      </tr>
+
+        <div>
+          <%= image_tag product.get_image(100,200) %>
+          <%= product.name %>
+          <span>￥</span><%= product.price %>
+        </div>
+
       <% end %>
       <tr>
         <th>￥<%= product.price %></th>

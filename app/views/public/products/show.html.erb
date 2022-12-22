@@ -6,21 +6,21 @@
 
 <!--  < if @product.is_active == TRUE %>-->
 <!--  <= form_with(model: @cart_item,url: cart_items_index_path, method: :post,local: true)do |f| %>-->
-<!--    <= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>-->
-<!--   <= f.hidden_field :product_id, :value => @product.id %>-->
+<!-    <= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>-->
+<!-<= f.hidden_field :product_id, :value => @product.id %>-->
      <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
      <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
 <!--   <= f.submit "カートに入れる" %>-->
 <!--  < end %>-->
 <!--< end %>-->
-
-  <%= image_tag @product.image, size: "200x300" %>
-
-
-
-
-
-
+<%= form_with model: @cart_item, method: :post do |f| %>
+<%= image_tag @product.image, size: "300x200" %>
+<%= @product.name %>
+<%= @product.introduction %>
+<span>¥</span><%= (@product.price + @product.price * 0.1).round.to_s(:delimited) %><span>(税込)</span>
+<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+<%= f.submit 'カートに入れる' %>
+<% end %>
 
 
 
