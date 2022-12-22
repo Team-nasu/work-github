@@ -9,4 +9,5 @@ class CartItem < ApplicationRecord
     product.with_tax_price * quantity
   end
 
+
 end

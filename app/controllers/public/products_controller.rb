@@ -1,5 +1,8 @@
 class Public::ProductsController < ApplicationController
   def index
+
+    @products = Product.page(params[:page])
+
   end
 
 
@@ -9,5 +12,9 @@ class Public::ProductsController < ApplicationController
     
   end
 
+  #   private
+  # def product_params
+  #   params.require(:product).permit(:is_active, :Genre, :price)
+  # end
 
 end
