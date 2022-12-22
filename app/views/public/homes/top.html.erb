@@ -15,15 +15,24 @@
     <div>
       <h2>新着商品</h2>
       <% @products.each do |product| %>
-        <div>
+      <div class="col-md-3">
+      <table>
+      <%= link_to product_path(product) do %>
+      <tr>
+        <th>
           <%= image_tag product.get_image %>
-          <%= product.name %>
-          <span>￥</span><%= product.price %>
-        </div>
+        </th>
+      </tr>
+      <tr>
+        <th><%= product.name %></th>
+      </tr>
       <% end %>
-    </div>
-    <div class="row">
-      <div class="col-md-3 offset-md-9">
-        <%= link_to "すべての商品を見る＞", products_path %>
-      </div>
-    </div>
+      <tr>
+        <th>￥<%= product.price %></th>
+      </tr>
+  </table>
+  <% end %>
+  </div>
+  <%= link_to "すべての商品を見る＞", products_path %>
+</div>
+</div>

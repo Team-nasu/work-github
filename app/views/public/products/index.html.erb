@@ -1,11 +1,22 @@
-<span class="h2">商品一覧</span><span>(全<%= Product.count %>件)</span>
+<span class="h2">商品一覧</span><span>(全<%= @products.count %>件)</span>
 <% @products.each do |product| %>
-    <div class="col-md-3">
-        <%= link_to product_path(product) do %>
-            <%= image_tag product.get_image %>
-            <%= product.name %>
-        <% end %>
-        <span>￥</span><%= product.price %>
-    </div>
+<div class="col-md-3">
+  <table>
+    <%= link_to product_path(product) do %>
+    <tr>
+      <th>
+        <%= image_tag product.get_image %>
+      </th>
+    </tr>
+    <tr>
+      <th><%= product.name %></th>
+    </tr>
+    <% end %>
+    <tr>
+      <th>￥<%= product.price %></th>
+    </tr>
+</table>
 <% end %>
-<%= paginate @products %>
+</div>
+
+
