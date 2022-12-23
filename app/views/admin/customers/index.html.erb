@@ -14,9 +14,9 @@
       <th><%= customer.email %></th>
       <td>
         <% if customer.is_deleted == false %>
-          有効
+          <p class="text-secondary">退会済み</p>
         <% else %>
-          退会済み
+          <p class="text-success">有効</p>
         <% end %>
       </td>
     </tr>
