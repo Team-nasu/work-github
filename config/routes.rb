@@ -9,12 +9,8 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-
-
-
     resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :new, :show, :edit, :create, :update]
-
     resources :genres, only: [:index, :edit]
     get 'homes/top'
     get 'orders/show'
@@ -31,7 +27,7 @@ Rails.application.routes.draw do
     get "customers/check" => "customers#check"
     patch "customers/withdraw" => "customers#withdraw"
     resources :products, only: [:index, :show]
-    get 'cart_items/index'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end
