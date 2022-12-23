@@ -52,12 +52,15 @@ class Public::OrdersController < ApplicationController
   def complite
   end
 
-  def index
-    @orders = current_customer.orders
-  end
+  # def index
+  #   @orders = current_customer.orders
+  # end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+    @order = Order.current_customer.id
+    @order_price = @order.order_product.price
+    @order.total_payment = @order.postage + @order_price.to_i
+    @order.id = order_products.order_id
   end
 
   private
