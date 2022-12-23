@@ -1,27 +1,44 @@
-<h1>Public::Orders#show</h1>
+<h4>注文履歴詳細</h4>
+<h5>注文情報</h5>
 <table>
   <tr>
-    <td>注文日</td><td><%= @orders.create_at %></td>
+    <td>注文日</td><td><%= @order.create_at %></td>
   </tr>
   <tr>
-    <td>配送先</td><td><%= @order.shipping_post_code %><br><%= @orders.shipping_address %><br><%= @order.shipping_name %></td>
+    <td>配送先</td><td><%= @order.shipping_post_code %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td>
   </tr>
   <tr>
-    <td>支払方法</td><td><%= @orders.payment_method %></td>
+    <td>支払方法</td>
+    <td><% @order.payment_method %></td>
   </tr>
   <tr>
-    <td>ステータス</td><td><%= @orders.order_status %></td>
+    <td>ステータス</td><td><%= @order.order_status %></td>
   </tr>
 </table>
 <h5>請求情報</h5>
 <table>
+
   <tr>
-    <td>商品合計</td><td></td>
+    <td>商品合計</td><td><%= @order_price %></td>
   </tr>
   <tr>
-    <td>配送料</td><td><%= @orders.postage %></td>
+    <td>配送料</td><td><%= @order.postage %></td>
   </tr>
   <tr>
-    <th>ご請求額</th><td></td>
+    <th>ご請求額</th><td><% @order.billing_amount %></td>
+  </tr>
+</table>
+
+<h5>注文内容</h5>
+<table>
+  <tr>
+    <td>商品名</td><td>単価(税込)</td><td>個数</td><td>小計</td>
+  </tr>
+  <% @order.each do |order| %>
+  <tr>
+    <td><%= order.order_product_id.product.name %></td>
+    <td><%= order.order_product_id.product.price %></td>
+    <td><%= order.amount %></td>
+    <td><%= @order_price %></td>
   </tr>
 </table>
