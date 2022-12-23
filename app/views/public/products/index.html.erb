@@ -5,7 +5,7 @@
             <%= image_tag product.get_image(100,200) %>
             <%= product.name %>
         <% end %>
-        <span>￥</span><%= product.price %>
+        <%= (product.price + product.price * 0.1).round.to_s(:delimited) %>
     </div>
 <% end %>
 
