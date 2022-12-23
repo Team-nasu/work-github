@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :addresses, only: [:index, :edit]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     post 'orders/confirm' => "orders#confirm"
     get "customers/information/edit" => "customers#edit"
     get "customers" => "customers#show"
