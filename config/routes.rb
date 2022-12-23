@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "customers/check" => "customers#check"
     patch "customers/withdraw" => "customers#withdraw"
     resources :products, only: [:index, :show]
-    get 'cart_items/index'
+    resources :cartitems, only: [:index, :update, :destroy, :create]
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end
