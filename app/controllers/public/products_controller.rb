@@ -6,13 +6,12 @@ class Public::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
-    
   end
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.save
-    redirect_to '/public/cart_items'
+    @cart_item.save!
+    redirect_to cart_items_path(current_customer.id)
   end
 
 
