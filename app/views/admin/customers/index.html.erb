@@ -13,7 +13,7 @@
       <th><%= link_to admin_customer_path(customer) do%><%= customer.last_name %><%= customer.first_name %><% end %></th>
       <th><%= customer.email %></th>
       <td>
-        <% if customer.is_deleted == false %>
+        <% if customer.is_deleted == true %>
           <p class="text-secondary">退会済み</p>
         <% else %>
           <p class="text-success">有効</p>
