@@ -1,22 +1,13 @@
 <div class="container">
   <div class-"row">
 
-    <h4>マイページ</h4>
+    <h3>マイページ</h3>
 
   <div class="row">
-<<<<<<< Updated upstream
     <div class="col-md-8">
    <h5>登録情報</h5><span><%= link_to "編集する", customers_information_edit_path, class: 'btn btn-success' %></span>
-
+  
     <table>
-=======
-<div class="col-md-8">
-  <div class="form-inline p-2">
-   <h5 >登録情報</h5>
-   <%= link_to "編集する", customers_information_edit_path, class: 'btn btn-success btn-sm' %></div>
-   <div class="col-md-6 offset-md-3">
-    <table class="table table-bordered border-dark">
->>>>>>> Stashed changes
       <tr>
         <td>氏名</td>
         <td><%= current_customer.last_name %>  <%= current_customer.first_name %></td>
@@ -42,7 +33,6 @@
         <td><%= current_customer.email %></td>
       </tr>
     </table>
-    </div>
     </div>
   </div>
   <div class="row">
