@@ -1,11 +1,10 @@
 class Product < ApplicationRecord
   has_many :order_products
   has_many :cart_items
+  belongs_to :ge
+  enum is_active: { on_sale: 0, out_of_sale: 1 }
   has_one_attached :image
 
-  def with_tax_price
-    (price * 1.1).floor
-  end
 
 
 
