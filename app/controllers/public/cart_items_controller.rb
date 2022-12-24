@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
     end
     #ログインcustomerのみ更新できるようにするため分岐の外に記述する
     @cart_item.customer_id = current_customer.id
-    @cart_item.save
+    @cart_item.save!
     redirect_to cart_items_path
   end
 
