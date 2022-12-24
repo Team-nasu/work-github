@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_12_21_070107) do
     t.string "postcode"
     t.string "address"
     t.string "name"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -95,8 +96,6 @@ ActiveRecord::Schema.define(version: 2022_12_21_070107) do
   end
 
   create_table "order_products", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
     t.integer "amount"
     t.integer "price"
     t.integer "making_status"
@@ -105,7 +104,6 @@ ActiveRecord::Schema.define(version: 2022_12_21_070107) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
     t.integer "postage"
     t.string "shipping_address"
     t.string "shipping_name"
@@ -118,7 +116,6 @@ ActiveRecord::Schema.define(version: 2022_12_21_070107) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
