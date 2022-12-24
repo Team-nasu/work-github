@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def create
+  def create #注文確認でデータをorderに送る
     @order = Order.new(order_params)
     @order.postage = 800
     @order.customer_id = current_customer.id
@@ -52,9 +52,9 @@ class Public::OrdersController < ApplicationController
   def complite
   end
 
-  # def index
-  #   @orders = current_customer.orders
-  # end
+  def index
+    @orders = current_customer.orders.all
+  end
 
   def show
     @order = Order.current_customer.id
