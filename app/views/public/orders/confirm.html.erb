@@ -16,7 +16,7 @@
         <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= attachment_image_tag(cart_item.@product, :image, size: "60x50") %><%= cart_item.@product.name %></td>
+            <td><%= image_tag cart_item.@product.get_image(60,50) %><%= cart_item.@product.name %></td>
             <td><%= (cart_item.@product.price*1.08).to_i %></td>
             <td><%= cart_item.quantity %></td>
             <td>
@@ -33,12 +33,12 @@
       <table>
         <tr>
           <th>送料</th>
-          <td><%= @order.postage = 800 %></td>
+          <td><%= @order.postage %></td>
           <th>商品合計</th>
           <td><%= total.to_i %></td>
           <th>請求金額</th>
-          <% @order.total_payment = @order.postage + total.to_i %>
-          <td><% @order.total_payment %></td>
+          <% @order.billing_amount = @order.postage + total.to_i %>
+          <td><% @order.billing_amount %></td>
         </tr>
       </table>
     </div>
