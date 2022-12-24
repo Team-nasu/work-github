@@ -11,7 +11,4 @@ class Customer < ApplicationRecord
   #   #有効会員はtrue、退会済み会員はfalse
 
 
-  # def active_for_authentication?
-  #   super && (self.is_deleted === "Invalid")
-  # end
 end

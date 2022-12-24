@@ -30,6 +30,10 @@ before_action :customer_state, only: [:create]
       if @customer.is_deleted
         redirect_to new_customer_registration_path
       end ##falseの場合はページ頭のbefore_actionの条件になるため、elseなどで記載する必要はなし
+
+    else
+      redirect_to new_customer_session_path
+
     end
   end
 
