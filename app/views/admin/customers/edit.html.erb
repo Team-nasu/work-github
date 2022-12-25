@@ -29,9 +29,9 @@
   <div class="row">
     <div class="col"><label>会員ステータス</label></div>
     <div class="col">
-      <%= f.radio_button :is_deleted, :true %>
-      <%= f.label :is_deleted_Available, "有効" %>
       <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :is_deleted_Available, "有効" %>
+      <%= f.radio_button :is_deleted, :true %>
       <%= f.label :is_deleted_Invalid, "退会" %>
     </div>
     <div class="col"></div>
