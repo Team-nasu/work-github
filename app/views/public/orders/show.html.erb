@@ -6,10 +6,10 @@
       <div class="table">
         <table>
           <tr>
-            <td>注文日</td><td><%= @order.create_at %></td>
+            <td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d/%H/%M/%S') %></td>
           </tr>
           <tr>
-            <td>配送先</td><td><%= @order.shipping_post_code %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td>
+            <td>配送先</td><td>〒<%= @order.shipping_postal_code %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td>
           </tr>
           <tr>
             <td>支払方法</td>
@@ -21,25 +21,30 @@
         </table>
       </div>
     </div>
-    
+
     <div class="col-3">
       <h5>請求情報</h5>
+
+      <% total = 0 %>
+      <% @order.order_products.each do |order_product| %>
+        <% total += order_product.subtotal %>
+      <% end %>
       <div class="table">
         <table>
           <tr>
-            <td>商品合計</td><td><%= @order_price %></td>
+            <td>商品合計</td><td><%= total %></td>
           </tr>
           <tr>
             <td>配送料</td><td><%= @order.postage %></td>
           </tr>
           <tr>
-            <th>ご請求額</th><td><% @order.billing_amount %></td>
+            <th>ご請求額</th><td><%= @order.billing_amount %></td>
           </tr>
         </table>
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <h5>注文内容</h5>
     <div class="table">
@@ -47,12 +52,15 @@
         <tr>
           <td>商品名</td><td>単価(税込)</td><td>個数</td><td>小計</td>
         </tr>
-        <% @order.each do |order| %>
+
         <tr>
-          <td><%= order.order_product_id.product.name %></td>
-          <td><%= order.order_product_id.product.price %></td>
-          <td><%= order.amount %></td>
-          <td><%= @order_price %></td>
+          <% @order.order_products.each do |order_product| %>
+        <br>
+
+          <td><%= order_product.product.name %></td>
+          <td><%= order_product.price %></td>
+          <td><%= order_product.amount %></td>
+          <td><%= order_product.subtotal %></td>
         </tr>
         <% end %>
       </table>
