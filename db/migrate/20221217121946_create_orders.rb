@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :shipping_address
       t.string :shipping_name
       t.string :shipping_postal_code
-      t.integer :order_status
+      t.integer :order_status, default: 0
       t.integer :payment_method
       t.integer :billing_amount
       t.timestamps

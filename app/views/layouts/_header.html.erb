@@ -56,11 +56,12 @@
           </ul>
       </div>
     </div>
+     <div class="input-group col-sm-2">
+       <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+       <div class="input-group-append">
+         <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
+       </div>
+     </div>
   </nav>
-  <div class="float-md-right">
-    <!--<%= form_with method: :get, local: true do |f| %>-->
-      <%= text_field :name, placeholder: "Search" %>
-        <%= submit_tag "検索" %>
-    <% end %>
-  </div>
+
 </header>

@@ -9,6 +9,7 @@ class Public::ProductsController < ApplicationController
   end
 
   def create
+    @product = Product.find(params[:id])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.save!
     redirect_to cart_items_path(current_customer.id)
@@ -17,7 +18,7 @@ class Public::ProductsController < ApplicationController
 
     private
   def cart_item_params
-    params.require(:cart_item).permit(:quantity)
+    params.require(:cart_item).permit(:quantity, :product_id)
   end
 
 end

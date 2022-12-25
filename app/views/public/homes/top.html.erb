@@ -1,9 +1,8 @@
-
     <div>
-      <div class="card" style="max-width: 400px;">
-        <%= image_tag 'forest.jpg' %>
+      <div class="card">
+        <%= image_tag 'chef.jpg', width: '80%', height: '20%', class: "mx-auto d-block" %>
         <div class="card-img-overlay">
-          <p class="bg-light text-dark">
+          <p class="bg-light text-dark text-center h4">
             ようこそ、ながのCAKEへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
@@ -12,18 +11,33 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="container">
       <h2>新着商品</h2>
-      <% @products.each do |product| %>
-        <div>
-          <%= image_tag product.get_image(100,200) %>
-          <%= product.name %>
-          <span>￥</span><%= product.price %>
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col">
+            <table>
+              <tr>
+                <th>
+                  <%= link_to product_path(product) do %>
+                    <%= image_tag product.get_image(100,200) %><br>
+                    <%= product.name %>
+                  <% end %>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <span>￥</span><%= product.price %>
+                </th>
+              </tr>
+            </table>
+          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col-md-3 offset-md-9">
-        <%= link_to "すべての商品を見る＞", products_path %>
+        <div class="row">
+          <div class="col-md-3 offset-md-9">
+           
+          <%= link_to "すべての商品を見る＞", products_path %>
+        </div>
       </div>
     </div>
