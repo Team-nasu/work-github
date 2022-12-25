@@ -10,18 +10,37 @@
             <th>注文個数</th>
           </tr>
         </thead>
+        <% @orders.each do |order| %>
         <tbody>
           <tr>
-            <% @orders.each do |order| %>
-            <td><%= link_to admin_order_path(order.id) do %>
-                 <%= order.created_at.to_s(:datetime_jp) %>
-                <% end %>></td>
-            <td><%= order.name %></td>
+            <td> <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <td><%= order.shipping_name %></td>
             <td><%= order.order_products.sum(:amount) %></td>
-            <% end %>
           </tr>
         </tbody>
+         <% end %>
       </table>
 
   </div>
 </div>
+<div class="d-flex justify-content-center">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item text-info">
+      <a class="page-link" href="#!" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#!">1</a></li>
+    <li class="page-item"><a class="page-link" href="#!">2</a></li>
+    <li class="page-item"><a class="page-link" href="#!">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#!" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+  </div>
+</nav>

@@ -12,19 +12,19 @@ class Public::CustomersController < ApplicationController
   def edit
     @customer = current_customer
   end
-
+  
   def update
-    @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customers_path(@customer)
+    customer = current_customer
+    customer.update(customer_params)
+    redirect_to customers_path
   end
-
+  
   def withdraw
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    redirect_to root_path 
   end
 
   private
