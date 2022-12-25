@@ -9,7 +9,8 @@ class Public::CartItemsController < ApplicationController
 
   def create
 
-    @cart_item = CartItem.find_by(params[:id])
+    @cart_item = CartItem.find_by(product_id:params[:id])
+    # byebug
     if @cart_item
       #カートにproductが存在したらquantityに新しいCart_itemのquantityを足す
       @cart_item.quantity += CartItem.new(cart_item_params).quantity
