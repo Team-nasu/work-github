@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   scope module: :public do
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :complite, :index, :show]
+    get 'orders/complite' => "orders#complite"
+    resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => "orders#confirm"
     get "customers/information/edit" => "customers#edit"
     get "customers" => "customers#show"

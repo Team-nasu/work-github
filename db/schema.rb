@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 2022_12_21_070107) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
