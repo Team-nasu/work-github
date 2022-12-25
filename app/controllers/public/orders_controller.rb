@@ -9,6 +9,8 @@ class Public::OrdersController < ApplicationController
   def confirm  #注文情報確認画面
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
+    @order.postage = 800
+    
 
     if params[:order][:address_option] == "0" #注文画面で住所選択が0のときログインユーザーの住所
       @order.shipping_postal_code = current_customer.postcode
@@ -32,7 +34,6 @@ class Public::OrdersController < ApplicationController
 
   def create #注文確認でデータをorderに送る
     @order = Order.new(order_params)
-    @order.postage = 800
     @order.customer_id = current_customer.id
     @order.save
 
@@ -65,6 +66,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postage, :payment_method, :shipping_name, :shipping_address, :shipping_post_code, :customer_id, :total_payment, :status, :product_id)
+    params.require(:order).permit(:postage, :payment_method, :shipping_name, :shipping_address, :shipping_post_code, :customer_id, :billing_amount, :status)
   end
 end

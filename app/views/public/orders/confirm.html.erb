@@ -33,12 +33,14 @@
       <table>
         <tr>
           <th>送料</th>
-          <td><%= @order.postage %></td>
           <th>商品合計</th>
-          <td><%= total.to_i %></td>
           <th>請求金額</th>
-          <% @order.billing_amount = total.to_i %>
-          <td><% @order.billing_amount %></td>
+        </tr>
+        <tr>
+          <% @order.billing_amount = total.to_i + @order.postage %>
+          <td><%= @order.postage %></td>
+          <td><%= total.to_i %></td>
+          <td><%= @order.billing_amount %></td>
         </tr>
       </table>
     </div>
@@ -46,7 +48,7 @@
   <div class="row">
     <table>
       <tr>
-        <th>支払方法</th><td><%= @order.payment_method %></td>
+        <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <th>お届け先</th>
@@ -59,11 +61,11 @@
       </tr>
     </table>
   </div>
-</div>
+</div class="row justify-content-center">
 <%= form_with model:@order, url: orders_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :customer_id %>
   <%= f.hidden_field :postage %>
-  <%= f.hidden_field :total_payment %>
+  <%= f.hidden_field :billing_amount %>
   <%= f.hidden_field :payment_method %>
   <%= f.hidden_field :shipping_name %>
   <%= f.hidden_field :shipping_address %>
