@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :complite, :index, :show]
     post 'orders/confirm' => "orders#confirm"
+    post 'orders' => "orders#complite"
     get "customers/information/edit" => "customers#edit"
     get "customers" => "customers#show"
     patch "customers/information" => "customers#update"
