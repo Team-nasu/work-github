@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
     @order.postage = 800
-    
+
 
     if params[:order][:address_option] == "0" #注文画面で住所選択が0のときログインユーザーの住所
       @order.shipping_postal_code = current_customer.postcode
@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
       @order.shipping_name = ship.name
 
     elsif params[:order][:address_option] = "2" #注文画面で選択が2のとき新規登録
-      @order.shipping_post_code = params[:order][:shipping_post_code]
+      @order.shipping_postal_code = params[:order][:shipping_postal_code]
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_name = params[:order][:shipping_name]
     else
@@ -57,15 +57,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.current_customer.id
-    @order_price = @order.order_product.price
-    @order.total_payment = @order.postage + @order_price.to_i
-    @order.id = order_products.order_id
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:postage, :payment_method, :shipping_name, :shipping_address, :shipping_post_code, :customer_id, :billing_amount, :status)
+    params.require(:order).permit(:postage, :payment_method, :shipping_name, :shipping_address, :shipping_postal_code, :customer_id, :billing_amount, :status)
   end
 end
