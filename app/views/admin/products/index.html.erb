@@ -1,18 +1,24 @@
-<div class="h2">商品一覧</div>
+<div><span class="h2">商品一覧</span>
+<span>
+<%= link_to new_admin_product_path do %>
+<%= image_tag '1250544.png', size: "30x30" %>
+<% end %>
+</span>
+</div>
 <span>商品ID</span>
 <span>商品名</span>
 <span>税抜価格</span>
 <span>ジャンル</span>
 <span>ステータス</span>
 <% @products.each do |product| %>
-    <div class="col-md-3">
+  <span class="col-4">
       <%= product.id %>
-      <%= link_to product_path(product) do %>
+      <%= link_to admin_product_path(product) do %>
         <%= product.name %>
       <% end %>
       <!--<= product.Genre.name %>-->
       <span>￥</span><%= product.price %>
       <!--<= product.is_active ? '販売中' : '販売停止中' %>-->
-    </div>
+  </span>
 <% end %>
 
