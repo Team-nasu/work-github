@@ -1,15 +1,17 @@
 <div class="container">
   <div class-"row">
 
-    <h3>マイページ</h3>
+    <h4 class="col-md-3">マイページ</h4>
 
   <div class="row">
-    <div class="col-md-8">
-   <h5>登録情報</h5><span><%= link_to "編集する", customers_information_edit_path, class: 'btn btn-success' %></span>
-  
-    <table>
+    <div class="col-md-6">
+      <div class="d-flex flex-row">
+        <h5 class="p-2">登録情報</h5>
+       <div class="col-md-5"><%= link_to "編集する", customers_information_edit_path, class: 'btn btn-success' %></div>
+      </div>
+    <table class="table table-bordered m-3">
       <tr>
-        <td>氏名</td>
+        <td class="col-4">氏名</td>
         <td><%= current_customer.last_name %>  <%= current_customer.first_name %></td>
       </tr>
       <tr>
