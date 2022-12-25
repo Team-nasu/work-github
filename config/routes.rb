@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/show'
+  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -13,7 +16,8 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     get 'homes/top'
-    get 'orders/show'
+    get 'orders/:id' => 'orders#show'
+    patch "orders/:id" => "orders#update"
   end
 
   scope module: :public do
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
     get 'orders/complite' => "orders#complite"
     resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => "orders#confirm"
+    post 'orders' => "orders#complite"
     get "customers/information/edit" => "customers#edit"
     get "customers" => "customers#show"
     patch "customers/information" => "customers#update"

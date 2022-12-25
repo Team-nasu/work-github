@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.find_by(params[:id])
+    @cart_item = CartItem.find_by(product_id:params[:id])
     if @cart_item
       #カートにproductが存在したらquantityに新しいCart_itemのquantityを足す
       @cart_item.quantity += CartItem.new(cart_item_params).quantity
@@ -23,7 +23,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = current_customer
+    @cart_item = CartItem.find(params[:id])
     @product = Product.all
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path

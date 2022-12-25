@@ -1,0 +1,12 @@
+<h3>購入者</h3>
+<%= @order.shipping_name %>
+<h3>注文日</h3>
+<%= @order.created_at %>
+<h3>配送先</h3>
+<%= @order.payment_method %>
+<h3>注文ステータス</h3>
+
+        <%= form_with model: @order, url: admin_path, method: :patch do |f| %>
+         <%= f.select :order_status, ["入金待ち","入金確認","製作中","発送準備中","発送済み"] %>
+            <%= f.submit '更新' %>
+        <% end %>
