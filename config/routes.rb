@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :new, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
+    resources :orders, only: [:show, :update]
     get 'homes/top'
-    get 'orders/:id' => 'orders#show'
-    patch "orders/:id" => "orders#update"
   end
 
   scope module: :public do

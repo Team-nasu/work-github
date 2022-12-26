@@ -1,13 +1,15 @@
-<h4>会員一覧</h4>
-<div class="table">
-  <table>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-    <% @customers.each do |customer| %>
+<div class="container">
+  <h4 class="pt-4">会員一覧</h4>
+  <div class="row">
+    <div class='col-md-8 offset-md-1 pt-4'>
+    <table class="table">
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+      <% @customers.each do |customer| %>
       <tr>
         <th><%= customer.id %></th>
         <th><%= link_to admin_customer_path(customer) do%><%= customer.last_name %><%= customer.first_name %><% end %></th>
@@ -20,10 +22,11 @@
           <% end %>
         </th>
       </tr>
-    <% end %>
+      <% end %>
     <!--10項目まで1ページに表示-->
-    <%= paginate @customers %>
+      <%= paginate @customers %>
   
-  </table>
+    </table>
+    </div>
+  </div>
 </div>
-

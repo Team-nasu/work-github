@@ -1,9 +1,9 @@
-<div class="container">
-<h2 class="py-3">ログイン</h2>
+<div class="container" style="font-size: 15px;">
+<h3 class="py-3">ログイン</h3>
 
 <%= render "devise/shared/error_messages",resource: resource %>
 
-<h4 class="p-3">会員の方はこちらからログイン</h4>
+<h5 class="p-3">会員の方はこちらからログイン</h5>
 <%= form_with model: Customer.new, url: customer_session_path(), local: true do |f| %>
 
   <div class="row justify-content-center p-2">
@@ -20,7 +20,7 @@
   </div>
 <% end %>
 <br>
-<h4 class="p-3">会員登録がお済みでない方</h4>
+<h5 class="p-3">会員登録がお済みでない方</h5>
 <div class="col-md-5">
 <%= link_to "こちら", new_customer_registration_path, class: "col-md-3" %>から新規登録を行ってください。
 </div>
