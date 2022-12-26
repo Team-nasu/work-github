@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col offset-1">
-      <h5>注文情報</h5>
+      <h5 class="font-weight-bold">注文情報</h5>
         <table class="table table-bordered">
           <tr>
             <td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
@@ -15,13 +15,13 @@
             <td><%= @order.payment_method_i18n %></td>
           </tr>
           <tr>
-            <td>ステータス</td><td><%= @order.order_status.i18n %></td>
+            <td>ステータス</td><td><%= @order.order_status %></td>
           </tr>
         </table>
       </div>
 
     <div class="col">
-      <h5>請求情報</h5>
+      <h5 class="font-weight-bold">請求情報</h5>
 
       <% total = 0 %>
       <% @order.order_products.each do |order_product| %>
@@ -45,7 +45,7 @@
 
   <div class="row d-flex justify-content-center">
     <div class="col offset-1">
-    <h5>注文内容</h5>
+    <h5 class="font-weight-bold">注文内容</h5>
       <table class="table table-bordered">
         <tr>
           <td>商品名</td><td>単価(税込)</td><td>個数</td><td>小計</td>

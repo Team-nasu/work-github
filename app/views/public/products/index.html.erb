@@ -1,24 +1,23 @@
-<div class="container" style="font-size: 15px;">
-  
-    <span class="h3">商品一覧</span>
-    <span>(全<%= Product.count %>件)</span>
-  
+<div><span class="h4">商品一覧</span><span>(全<%= Product.count %>件)</span></div>
+<div class="container">
     <div class="row">
-<% @products.each do |product| %>
-        <div class="col-3">
-            <%= link_to product_path(product) do %>
-                <div>
-                    <%= image_tag product.get_image(200,300) %>
-                </div>
-                <div>
-                    <%= product.name %>
-                </div>
-            <% end %>
-            <div>
-            <%= (product.price + product.price * 0.1).round.to_s(:delimited) %>
-            </div>
-        </div>
-<% end %>
-<%= paginate @products %>
+    <% @products.each do |product| %>
+    <table class="col-3">
+      <tr>
+        <th>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.get_image(200,300) %><br>
+            <%= product.name %>
+          <% end %>
+        </th>
+      <tr>
+        <th>
+          ￥<%= (product.price + product.price * 0.1).round.to_s(:delimited) %>
+        </th>
+      </tr>
+    </table>
+    <% end %>
     </div>
-</div>
+    <%= paginate @products %>
+  </div>
+

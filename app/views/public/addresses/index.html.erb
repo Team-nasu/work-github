@@ -1,5 +1,5 @@
 <div class="container">
-<h2 class="py-3">配送先登録/一覧</h2>
+<h4 class="py-3">配送先登録/一覧</h4>
 
 <%= form_with model: @address ,url: addresses_path(), method: :post do |f| %>
   <div class="row p-1">
@@ -22,6 +22,7 @@
     <%= f.submit :"新規登録", class: 'btn btn-success col-md-2' %>
   </div>
 <% end %>
+
 <br>
 <table class="table table-bordered">
   <thead>
@@ -43,3 +44,4 @@
   <% end %>
   </tbody>
 </table>
+
