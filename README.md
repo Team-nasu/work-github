@@ -1,24 +1,32 @@
-# README
+# ながのCAKE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+商品の通販サイトとしてお届け先などの情報を管理することが可能
 
-Things you may want to cover:
 
-* Ruby version
+## 会員側ページ
+* ログインがなくても商品の閲覧が可能
+* 商品を選択してカートへ入れるをクリックするとカートに商品が入る
+* ログインすると商品を注文することが可能
 
-* System dependencies
+## 管理者側ページ
+* 管理者でログインすることでヘッダーが変更される 
+* 商品の追加、商品ジャンルの追加が可能。販売の際のステータスを変更することができる
+* 会員ステータス、注文ステータス、製作ステータスでデータ管理可能
 
-* Configuration
+## 使い方
+### 会員側
+* 会員側でログインし、商品詳細ページからカートに入れるボタンをクリックする
+* 注文に進み、お届け先を指定する（お届け先は会員住所、登録住所、新規登録住所から選択）
+* 支払方法を選択し確認画面に遷移後注文が確定する 
 
-* Database creation
+### 管理者側
+* 管理者側ページでログインする(https://1168e67cd00c46c3a7f3537d8c4fbfb7.vfs.cloud9.ap-northeast-1.amazonaws.com/admin/sign_in)
+* ログインemail: nasu@webcamp.jp
+* password: nasu0123
+* ジャンルに商品ジャンルを追加する
+* 商品を追加する（商品の画像が保存されない場合はデフォルト画像が表示される）
+* ヘッダーでは商品一覧、会員一覧画面に遷移可能 
+* 注文ごとに注文ステータスを設定可能
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 製作者
+チームNASU

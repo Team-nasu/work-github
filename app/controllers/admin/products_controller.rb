@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   def index
-    @products = Product.page(params[:page]).per(10)
+    @products = Product.all
   end
 
   def new
@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
+    @product.save!
     redirect_to admin_product_path(@product.id)
   end
 

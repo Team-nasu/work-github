@@ -1,32 +1,32 @@
 <h4>会員情報編集</h4>
 <%= form_with model:@customer, url: customers_information_path(@customer), method: :patch do |f| %>
-<div class="form-group col-md-6">
+<div class="container mt-5">
 
-  <div class="row mt-2">
-    <div class="col">氏名</div>
-    <div class="col"><%= f.text_field :last_name, placeholder: "令和" %></div><div class="col"><%= f.text_field :first_name, placeholder: "道子" %></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">氏名</div>
+    <div class="col-3"><%= f.text_field :last_name, placeholder: "令和", class: "form-control" %></div><div class="col-3"><%= f.text_field :first_name, placeholder: "道子", class: "form-control" %></div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col"><label>フリガナ</label></div><div class="col"><%= f.text_field :last_name_kana, placeholder: "レイワ" %></div><div class="col"><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">フリガナ</div><div class="col-3"><%= f.text_field :last_name_kana, placeholder: "レイワ", class: "form-control" %></div><div class="col-3"><%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "form-control" %></div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col"><label>郵便番号</label></div><div class="col"><%= f.text_field :postcode, placeholder: "0000000" %></div><div class="col"></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">郵便番号</div><div class="col-3"><%= f.text_field :postcode, placeholder: "0000000", class: "form-control" %></div><div class="col-3"></div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col"><label>住所</label></div><div class="col"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></div><div class="col"></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">住所</div><div class="col-6"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %></div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col"><label>電話番号</label></div><div class="col"><%= f.text_field :phone_number, placeholder: "0000000000" %></div><div class="col"></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">電話番号</div><div class="col-3"><%= f.text_field :phone_number, placeholder: "0000000000", class: "form-control" %></div><div class="col-3"></div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col"><label>メールアドレス</label></div><div class="col"><%= f.text_field :email, placeholder: "sample@example.com" %></div><div class="col"></div>
+  <div class="row mt-2 justify-content-start form-group">
+    <div class="col-3">メールアドレス</div><div class="col-3"><%= f.text_field :email, placeholder: "sample@example.com", class: "form-control" %></div><div class="col-3"></div>
   </div>
-  <div class="row mt-2">
+  <div class="row mt-2 justify-content-start form-group">
     <div class="col offset-3">
       <%= f.submit '編集内容を保存', class: "btn btn-success btn-lg" %>
       <% end %>
