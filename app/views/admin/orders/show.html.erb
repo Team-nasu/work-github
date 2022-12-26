@@ -22,6 +22,9 @@
             <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
               <!--<= f.select :order_status, options_from_collection_for_select(Genre.all, :id, :name) %>-->
              <%= f.select :order_status, options_for_select(Order.order_statuses.keys) %>
+             <%= f.select :order_status, Order.order_statuses_i18n.keys.to_a %>
+<%= f.select :order_status, Order.order_statuses_i18n.keys.map{|k| [Order.order_statuses_i18n[k],k]} %>
+<%= f.select :making_status, OrderProduct.making_statuses_i18n.keys.map{|k| [OrderProduct.making_statuses_i18n[k],k]} %>
             <span class="actions"><%= f.submit '更新', class: "btn btn-success" %></span>
             <% end %>
         </td>
