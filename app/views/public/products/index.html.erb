@@ -1,4 +1,8 @@
-<div><span class="h2">商品一覧</span><span>(全<%= Product.count %>件)</span></div>
+<div class="container" style="font-size: 15px;">
+  
+    <span class="h3">商品一覧</span>
+    <span>(全<%= Product.count %>件)</span>
+  
     <div class="row">
 <% @products.each do |product| %>
         <div class="col-3">
@@ -17,4 +21,4 @@
 <% end %>
 <%= paginate @products %>
     </div>
-
+</div>
