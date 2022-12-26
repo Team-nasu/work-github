@@ -1,42 +1,64 @@
-<h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
-
+<div class='container'>
+<h4 class= "pt-4"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
 
 <%= form_with model:@customer, url: admin_customer_path(@customer), method: :patch do |f| %>
 
-  <div class="form-group col-md-6">
   <div class="row">
-    <div class="col"><label>会員ID</label></div><div class="col"><%= @customer.id %></div>
-  </div>
-
-  <div class="row">
-    <div class="col"><label>氏名</label></div><div class="col"><%= f.text_field :last_name, placeholder: "令和" %></div><div class="col"><%= f.text_field :first_name, placeholder: "道子" %></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>フリガナ</label></div><div class="col"><%= f.text_field :last_name_kana, placeholder: "レイワ" %></div><div class="col"><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>郵便番号</label></div><div class="col"><%= f.text_field :postcode, placeholder: "0000000" %></div><div class="col"></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>住所</label></div><div class="col"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></div><div class="col"></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>電話番号</label></div><div class="col"><%= f.text_field :phone_number, placeholder: "0000000000" %></div><div class="col"></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>メールアドレス</label></div><div class="col"><%= f.text_field :email, placeholder: "sample@example.com" %></div><div class="col"></div>
-  </div>
-  <div class="row">
-    <div class="col"><label>会員ステータス</label></div>
-    <div class="col">
-      <%= f.radio_button :is_deleted, :false %>
-      <%= f.label :is_deleted_Available, "有効" %>
-      <%= f.radio_button :is_deleted, :true %>
-      <%= f.label :is_deleted_Invalid, "退会" %>
+    <div class="col-md-8">
+  <table class='table table-borderless offset-2'>
+       <tr class="form-group">
+        <th>会員ID</th>
+        <td class="col"><%= @customer.id %></td>
+       </tr>
+      
+      <tr class="form-group">
+        <th class="col">氏名</th>
+        <td><%= f.text_field :last_name, placeholder: "令和" %></td>
+        <td class="col"><%= f.text_field :first_name, placeholder: "道子" %></td>
+      </tr>
+       
+      <tr class="form-group">
+        <th>フリガナ</th>
+        <td><%= f.text_field :last_name_kana, placeholder: "レイワ" %></td>
+        <td><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></td>
+      </tr>
+       
+      <tr class="form-group">
+        <th>郵便番号</th>
+        <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
+      </tr>
+       
+      <tr class="form-group">
+        <th>住所</th>
+        <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: '40×5' %></td>
+      </tr>
+      
+      <tr class="form-group">
+        <th>電話番号</th>
+        <td><%= f.text_field :phone_number, placeholder: "0000000000" %></td>
+      </tr>
+       
+      <tr class="form-group">
+        <th>メールアドレス</th>
+        <td><%= f.text_field :email, placeholder: "sample@example.com" %></td>
+      </tr>
+       
+      <tr class="form-group">
+        <th>会員ステータス</th>
+        <td>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted_Available, "有効" %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted_Invalid, "退会" %>
+        </td>
+      </tr>
+  </table>
     </div>
-    <div class="col"></div>
   </div>
-  <div class="row">
-    <div class="col"><%= f.submit '編集内容を保存', class: "btn btn-primary" %></div>
+   <div class="row">
+      <div class="form-group col-md-2 offset-5">
+        <%= f.submit '編集内容を保存', class: "btn btn-primary" %>
+      </div>
+   <% end %>
   </div>
-<% end %>
+</div>
