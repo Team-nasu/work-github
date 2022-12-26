@@ -1,7 +1,8 @@
 class Public::AddressesController < ApplicationController
+
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = current_customer.addresses
     #@address = Address.find(params[:id])
   end
 

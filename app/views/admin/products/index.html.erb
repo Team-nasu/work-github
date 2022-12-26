@@ -1,34 +1,38 @@
-<div><span class="h2">商品一覧</span>
-<span>
-<%= link_to new_admin_product_path do %>
-<%= image_tag '1250544.png', size: "30x30" %>
-<% end %>
+<span class="h2 offset-1">商品一覧</span>
+
+<span class="col offset-10">
+  <%= link_to new_admin_product_path do %>
+    <%= image_tag '1250544.png', size: "30x30" %>
+  <% end %>
 </span>
-</div>
-<div class="table">
-  <tr>
-<th>商品ID</th>
-<th>商品名</th>
-<th>税抜価格</th>
-<th>ジャンル</th>
-<th>ステータス</th>
-</tr>
-<% @products.each do |product| %>
-<tr>
-      <th><%= product.id %></th>
-      <th>
-      <%= link_to admin_product_path(product) do %>
-        <%= product.name %>
-      <% end %>
-      </th>
-      <%= product.genre.name %>
-      <th>
-      <span>￥</span><%= product.price %>
-      </th>
-        <th>
-      <%= product.is_active ? '販売中' : '販売停止中' %>
-      </th>
-      </tr>
-<% end %>
+<div class="table d-flex justify-content-center">
+  <table class="col-8">
+    <tr class="table-danger">
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td>
+        <%= link_to admin_product_path(product) do %>
+          <%= product.name %>
+        <% end %>
+      </td>
+      <td>￥<%= product.price %></td>
+      <td><!--<= product.Genre_id.name %>--></td>
+      <td><!--<= product.is_active ? '販売中' : '販売停止中' %>-->
+        <% if product.is_active == true %>
+          <p class="text-success">販売中</p>
+        <% else %>
+          <p class="text-secondary">販売停止中</p>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </div>
 <%= paginate @products %>

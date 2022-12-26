@@ -6,7 +6,7 @@
     </tr>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at.strftime('%Y/%m/%d/%H/%M/%S') %></td>
+        <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
         <td><%= order.shipping_postal_code %><br><%= order.shipping_address %><br><%= order.shipping_name %></td>
         <td>
           <% order.order_products.each do |order_product| %>
@@ -14,7 +14,7 @@
           <% end %>
         </td>
         <td><%= order.billing_amount %>円</td>
-        <td><%= order.order_status %></td>
+        <td><%= order.order_status.i18n %></td>
         <td><%= link_to "表示する", order_path(order) %></td>
       </tr>
     <% end %>

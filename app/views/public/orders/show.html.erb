@@ -1,12 +1,11 @@
 <h4>注文履歴詳細</h4>
 <div class="container">
-  <div class="row">
-    <div class="col-7">
+  <div class="row d-flex justify-content-center">
+    <div class="col offset-1">
       <h5>注文情報</h5>
-      <div class="table">
-        <table>
+        <table class="table table-bordered">
           <tr>
-            <td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d/%H/%M/%S') %></td>
+            <td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
           </tr>
           <tr>
             <td>配送先</td><td>〒<%= @order.shipping_postal_code %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td>
@@ -16,13 +15,12 @@
             <td><% @order.payment_method %></td>
           </tr>
           <tr>
-            <td>ステータス</td><td><%= @order.order_status %></td>
+            <td>ステータス</td><td><%= @order.order_status.i18n %></td>
           </tr>
         </table>
       </div>
-    </div>
 
-    <div class="col-3">
+    <div class="col">
       <h5>請求情報</h5>
 
       <% total = 0 %>
@@ -30,7 +28,7 @@
         <% total += order_product.subtotal %>
       <% end %>
       <div class="table">
-        <table>
+        <table class="table table-bordered">
           <tr>
             <td>商品合計</td><td><%= total %></td>
           </tr>
@@ -45,10 +43,10 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
+    <div class="col offset-1">
     <h5>注文内容</h5>
-    <div class="table">
-      <table>
+      <table class="table table-bordered">
         <tr>
           <td>商品名</td><td>単価(税込)</td><td>個数</td><td>小計</td>
         </tr>
@@ -64,5 +62,6 @@
         </tr>
         <% end %>
       </table>
+      </div>
     </div>
-  </div>
+</div>

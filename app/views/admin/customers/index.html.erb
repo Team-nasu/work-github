@@ -1,29 +1,29 @@
 <h4>会員一覧</h4>
 <div class="table">
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-  </tr>
-  <% @customers.each do |customer| %>
+  <table>
     <tr>
-      <th><%= customer.id %></th>
-      <th><%= link_to admin_customer_path(customer) do %><%= customer.last_name %><%= customer.first_name %><% end %></th>
-      <th><%= customer.email %></th>
-      <th>
-        <% if customer.is_deleted == false %>
-          <p class="text-success">有効</p>
-        <% else %>
-          <p class="text-secondary">退会済み</p>
-        <% end %>
-      </th>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
     </tr>
-  <% end %>
-  <!--10項目まで1ページに表示-->
-  <%= paginate @customers %>
-
-</table>
+    <% @customers.each do |customer| %>
+      <tr>
+        <th><%= customer.id %></th>
+        <th><%= link_to admin_customer_path(customer) do%><%= customer.last_name %><%= customer.first_name %><% end %></th>
+        <th><%= customer.email %></th>
+        <th>
+          <% if customer.is_deleted == false %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p class="text-secondary">退会済み</p>
+          <% end %>
+        </th>
+      </tr>
+    <% end %>
+    <!--10項目まで1ページに表示-->
+    <%= paginate @customers %>
+  
+  </table>
 </div>
 
