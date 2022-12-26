@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
       @order.shipping_name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1" #注文画面で住所選択が1のとき配送先テーブルからデータ取得
-      ship = Address.find(params[:order][:customer_id]) #該当の会員IDの配送先データ取得
+      ship = Address.find(params[:order][:address_id]) #該当の会員IDの配送先データ取得
       @order.shipping_postal_code = ship.postcode
       @order.shipping_address = ship.address
       @order.shipping_name = ship.name

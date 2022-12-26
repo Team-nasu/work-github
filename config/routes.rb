@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get 'orders/complite' => "orders#complite"
     resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => "orders#confirm"
+    post 'orders' => "orders#complite"
     get "customers/information/edit" => "customers#edit"
     get "customers" => "customers#show"
     patch "customers/information" => "customers#update"

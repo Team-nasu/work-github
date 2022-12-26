@@ -61,7 +61,7 @@
       </tr>
     </table>
   </div>
-</div class="row justify-content-center">
+<div class="row justify-content-center">
 <%= form_with model:@order, url: orders_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :customer_id %>
   <%= f.hidden_field :postage %>
@@ -73,5 +73,6 @@
   <%= f.hidden_field :making_status %>
 	<%= f.submit '注文を確定する' ,class: "btn btn-success"%>
 <% end %>
+</div>
 
 

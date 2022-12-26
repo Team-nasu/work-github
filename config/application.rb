@@ -13,8 +13,8 @@ module WorkGithub
 
 
     config.i18n.default_locale = :ja
-
-    config.time_zone = 'Tokyo'
+    
+    config.time_zone = 'Asia/Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #
