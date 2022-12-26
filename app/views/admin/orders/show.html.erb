@@ -21,10 +21,9 @@
         <td class="col-10">
             <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
               <!--<= f.select :order_status, options_from_collection_for_select(Genre.all, :id, :name) %>-->
-             <%= f.select :order_status, options_for_select(Order.order_statuses.keys) %>
-             <%= f.select :order_status, Order.order_statuses_i18n.keys.to_a %>
+             <!--<= f.select :order_status, options_for_select(Order.order_statuses.keys) %>-->
+             <!--<= f.select :order_status, Order.order_statuses_i18n.keys.to_a %>-->
 <%= f.select :order_status, Order.order_statuses_i18n.keys.map{|k| [Order.order_statuses_i18n[k],k]} %>
-<%= f.select :making_status, OrderProduct.making_statuses_i18n.keys.map{|k| [OrderProduct.making_statuses_i18n[k],k]} %>
             <span class="actions"><%= f.submit '更新', class: "btn btn-success" %></span>
             <% end %>
         </td>
@@ -52,10 +51,10 @@
             <td><%= order_product.amount %></td>
             <td><%= order_product.subtotal %></td>
             <td>
-              <%#= form_with model: order, url: admin_order_path, method: :patch do |f| %>
-                <%#= f.select :order_status, ["着手不可","製作待ち","製作中","製作完了"] %>
-                <%#= f.submit '更新', class: "btn btn-sm btn-success" %>
-              <%# end %>
+              <%= form_with model: order_product, url: admin_order_product_path(order_product), method: :patch do |f| %>
+                <%= f.select :making_status, OrderProduct.making_statuses.keys.map{|k| [OrderProduct.making_statuses_i18n[k],k]} %>
+                <%= f.submit '更新', class: "btn btn-sm btn-success" %>
+              <% end %>
             </td>
           </tr>
         <% end %>

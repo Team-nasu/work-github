@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :show, :edit, :create, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :orders, only: [:show, :update]
+    resources :order_products, only: [:update]
     get 'homes/top'
   end
 
