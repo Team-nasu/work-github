@@ -1,5 +1,6 @@
-<span class="h2 offset-1">商品一覧</span>
-
+<div class="container" style="font-size: 15px;">
+<span class="h3 offset-1">商品一覧</span>
+<dev class="row">
 <span class="col offset-10">
   <%= link_to new_admin_product_path do %>
     <%= image_tag '1250544.png', size: "30x30" %>
@@ -34,5 +35,9 @@
     </tr>
     <% end %>
   </table>
+
+ </div>
+</div>
 </div>
 <%= paginate @products %>
+
