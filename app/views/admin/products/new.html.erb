@@ -18,7 +18,7 @@
   <h4>ジャンル</h4>
   <%= f.select :genre_id, options_from_collection_for_select( Genre.all, :id, :name) %>
 　<!--<= f.select :Genre.name, options_for_select(Genre.names.keys), { include_blank: "--選択して下さい--" } %>-->
-
+  <!--<= f.hidden_field :genre_id, :value => @genre.id %>-->
   <h4>税抜価格</h4>
   <%= f.text_field :price, placeholder: "1000" %>
 

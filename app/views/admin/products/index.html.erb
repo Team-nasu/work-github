@@ -5,20 +5,30 @@
 <% end %>
 </span>
 </div>
-<span>商品ID</span>
-<span>商品名</span>
-<span>税抜価格</span>
-<span>ジャンル</span>
-<span>ステータス</span>
+<div class="table">
+  <tr>
+<th>商品ID</th>
+<th>商品名</th>
+<th>税抜価格</th>
+<th>ジャンル</th>
+<th>ステータス</th>
+</tr>
 <% @products.each do |product| %>
-  <span class="col-4">
-      <%= product.id %>
+<tr>
+      <th><%= product.id %></th>
+      <th>
       <%= link_to admin_product_path(product) do %>
         <%= product.name %>
       <% end %>
-      <!--<= product.Genre.name %>-->
+      </th>
+      <!--<= product.genre_id.name %>-->
+      <th>
       <span>￥</span><%= product.price %>
-      <!--<= product.is_active ? '販売中' : '販売停止中' %>-->
-  </span>
+      </th>
+        <th>
+      <%= product.is_active ? '販売中' : '販売停止中' %>
+      </th>
+      </tr>
 <% end %>
-
+</div>
+<%= paginate @products %>

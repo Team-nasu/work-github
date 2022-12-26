@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_many :order_products
   has_many :cart_items
+  belongs_to :genre
   has_one_attached :image
 
   def with_tax_price
