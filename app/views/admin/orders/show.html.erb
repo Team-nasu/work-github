@@ -6,7 +6,8 @@
 <%= @order.payment_method %>
 <h3>注文ステータス</h3>
 
-        <%= form_with model: @order, url: admin_path, method: :patch do |f| %>
-         <%= f.select :order_status, ["入金待ち","入金確認","製作中","発送準備中","発送済み"] %>
+        <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+          <!--<= f.select :order_status, options_from_collection_for_select(Genre.all, :id, :name) %>-->
+         <%= f.select :order_status, options_for_select(Order.order_statuses.keys) %>
             <%= f.submit '更新' %>
         <% end %>

@@ -23,7 +23,7 @@
         <% end %>
       </td>
       <td>￥<%= product.price %></td>
-      <td><!--<= product.Genre.name %>--></td>
+      <td><!--<= product.Genre_id.name %>--></td>
       <td><!--<= product.is_active ? '販売中' : '販売停止中' %>-->
         <% if product.is_active == true %>
           <p class="text-success">販売中</p>
@@ -35,3 +35,4 @@
     <% end %>
   </table>
 </div>
+<%= paginate @products %>
